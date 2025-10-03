@@ -13,8 +13,8 @@
             $hak=$_POST["hak"];
             $hak++;
 
-            if ($hak<5 && $rastgele=$sayi) {
-                echo "Bildin",
+            if ($hak<5 && $rastgele==$sayi) {
+                echo "Bildin";
             }
             elseif ($hak<5 && $rastgele != $sayi) {
                 echo" $hak . hakkın kaldı";
@@ -24,11 +24,11 @@
                 $hak=0;
                 $rastgele=rand(1,10);
             }
-        }
-        else{ 
+            else{ 
             $hak=0;
             $rastgele=rand(1,10);
-        }    
+            }  
+        }  
     ?>
  
     <form action="#" method="post">
@@ -38,6 +38,7 @@
     <input type="hidden" name="rastgele" value="<?php echo $rastgele; ?>">
     <input type="hidden" name="hak" value="<?= $hak; ?>">
     <input type="submit" value="Gönder">
+    <input type="submit" value="Yenile">
     </form>
 
 </body>
