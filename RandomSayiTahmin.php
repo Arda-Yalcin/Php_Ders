@@ -17,7 +17,7 @@
                 echo "Bildin";
             }
             elseif ($hak<5 && $rastgele != $sayi) {
-                echo" $hak . hakkın kaldı";
+                echo" $hak . hakkin kaldi";
             }
             elseif ($hak>=5) {
                 echo " <h3>Kaybettin </h3> <p> Yeni Tur Yeni Heycan</p>"; 
@@ -32,8 +32,8 @@
     ?>
  
     <form action="#" method="post">
-    <h3>Sayı Tutma Oyunu, Tuttuğum Sayıyı Tahmin Et! 5 Hakın Sonunda Bilmezsen Kazanamazsın </h3>
-    <label for="sayi">Sayı</label>
+    <h3>Sayi Tutma Oyunu, Tuttuğum Sayiyi Tahmin Et! 5 Hakin Sonunda Bilmezsen Kazanamazsin </h3>
+    <label for="sayi">Sayi</label>
     <input type="text" name="sayi">
     <input type="hidden" name="rastgele" value="<?php echo $rastgele; ?>">
     <input type="hidden" name="hak" value="<?= $hak; ?>">
