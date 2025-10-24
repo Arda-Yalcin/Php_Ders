@@ -14,6 +14,7 @@
 
     <?php
     $sayi=$_POST["Sayi"];
+    $say=0;
     if(isset($_POST["Sayi"]))
     {   
         
@@ -21,12 +22,13 @@
             $top=$sayi%$i;
             
             if($top==0){
-                echo $i." ";
+                echo "$i <br>";
+                $say+=1;     
             }
             
         }
-
-            
+        
+            echo"Girilen ".$sayi." sayısının ".$say." kadar çarpanı var";
     }
     else{echo "Lütfen sayi giriniz";}
 
@@ -34,3 +36,7 @@
     ?>
 </body>
 </html>
+
+//! girilen sayının mükemmel sayı olup olmadığını kontrol eden
+//! girilen sayının Asal sayı olup olmadığı
+//! TAU sayısı olup olmadığı
