@@ -9,11 +9,13 @@
     <?php
         $ad="Arda";
 
+        //? Parametresiz
         function selam(){
             $ism="basar";
             echo "Merhaba ".$ism;
         }
 
+        //? Parametreli
         function selamVer($s){    
             echo "Merhaba " .$s;
         }
@@ -21,6 +23,7 @@
         selamVer($ad);       
         selam();       
 
+        //? Geriye Değer Döndüren
         function sayiTopla($x,$y){
             return $x+$y;
         }
