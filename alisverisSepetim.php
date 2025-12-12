@@ -2,9 +2,7 @@
     $urunler=["Dumates"=>"Sırık Domates Çok Sulu Güzel",
               "Patates"=>"Ödemiş Patates",
               "Salatalık"=>"Yayladan Bol Sulu",
-              "Ananas"=>"Çok Taze",
-              "Karpuz"=>"Çekirdeksiz",
-              "Çilek"=>"En Olgun Ve sertleri"];
+              "Ananas"=>"Çok Taze"];
 
 if(!isset($_COOKIE["sepet"])){
     setcookie("sepet","",time()+60*60*24);
@@ -36,18 +34,12 @@ if(isset($_POST["urun"])){
             <?php 
                 foreach($urunler as $key => $value) {?>
             <div class="col-md-4">
-                <div class="card mb-3">
+                <div class="card md-3">
                     <div class="card-body">
                         <h4 class="card-title"><?= $key ?></h4>
                         <p class="card-text"><?= $value ?></p>
                         <form action="#" method="post">
                             <input type="hidden" name="urun" value="<?= $key ?>">
-                            <button
-                                type="submit"
-                                class="btn btn-primary"
-                            >
-                                Sepete ekle
-                            </button>
                             
                         </form>
                     </div>
