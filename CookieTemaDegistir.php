@@ -1,3 +1,18 @@
+<?php  
+
+
+if(!isset($_COOKIE["tema"])){
+    setcookie("tema","dark",time()+60*60*24);
+}
+
+
+if(isset($_POST["tema"])){
+   setcookie("tema", $_POST["tema"],time()+60*60*24);
+   $_COOKIE["tema"]=$_POST["tema"];
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -7,24 +22,28 @@
 
  <style>
     .dark{
-        background-color:white;
-        color: black;
-    }
-    .light{
         background-color:black;
         color:white;
+    }
+    .light{
+        background-color:white;
+        color:black;
     }
 </style>
 
 </head>
-<body>
+<body class="<?=$_COOKIE["tema"]; ?>">
     
 <form action="#" method="post">
-    <input type="radio" name="tema" id="dark">Koyu Tema <br>
-    <input type="radio" name="tema" id="dark">Açık Tema
+    <input type="radio" name="tema" id="dark" value="dark">Koyu Tema <br>
+    <input type="radio" name="tema" id="dark" value="light">Açık Tema <br>
     <input type="submit" value="Ayarla">
 </form>
 
+
+
+
+    
 
 </body>
 </html>
