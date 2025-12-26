@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    header('Location: Sepet.php');
+    header('Location: alisverisSepeti.php');
     exit();
 }
 if(isset(($_POST['email'])) && isset(($_POST['password']))) {
@@ -10,10 +10,10 @@ if(isset(($_POST['email'])) && isset(($_POST['password']))) {
     $sifre = $_POST['password'];
 
     // Basit doğrulama (gerçek uygulamalarda veritabanı kullanın)
-    if ($kullanici_adi === 'admin' && $sifre === 'password') {
-        $_SESSION['username'] = "Başar ACAROĞLU";
+    if ($kullanici_adi === 'Admin' && $sifre === 'password') {
+        $_SESSION['username'] = "Arda Yalcin";
         $_SESSION['logged_in'] = true;
-        header('Location: Sepet.php');
+        header('Location: alisverisSepeti.php');
         exit();
     } else {
         $error_message = "Geçersiz kullanıcı adı veya şifre.";

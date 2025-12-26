@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['logged_in']) ) {
-    header('Location: index.php');
+    header('Location: session.php');
     exit();
 }
 $urunler = [
@@ -69,7 +69,7 @@ $adet=explode(",",$_COOKIE["sepet"]);
             <div class="card-body">
               <h4 class="card-title"><?= $key ?></h4>
               <p class="card-text"><?= $value ?></p>
-              <form action="Sepet.php" method="post">
+              <form action="alisverisSepeti.php" method="post">
                 <input type="hidden" name="urun" value="<?= $key ?>">
                 <button type="submit" class="btn btn-primary">
                   Sepete Ekle
