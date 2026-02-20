@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="yukle3.php" method="post" enctype="multipart/form-data">
+    <form action="yukle.php" method="post" enctype="multipart/form-data">
         <label for="File">Dosya Yükle</label>
         <input type="file" name="dosya" id="dosya">
         <br>

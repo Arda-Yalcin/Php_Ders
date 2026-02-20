@@ -10,7 +10,7 @@
         if(isset($_FILES["dosya"])){
             $hedef="odevler/";
             $hedefDosya=$hedef.basename($_FILES["dosya"]["name"]);
-            $dosyaUzantisi=strtolower(pathinfo($hedefDosyai,PATHINFO_EXTENSION));
+            $dosyaUzantisi=strtolower(pathinfo($hedefDosya,PATHINFO_EXTENSION));
             $yukle=true;
 
             if(file_exists($hedefDosya)){
