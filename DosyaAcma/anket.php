@@ -73,7 +73,9 @@ if(isset($_POST["secim"])){
     fclose($dosya);
     $deger++;
     echo $deger;
-    
+    $dosya=fopen($yol,"w");
+    fwrite($dosya,$değer);
+    fclose($dosya);
 }
 
 ?>
