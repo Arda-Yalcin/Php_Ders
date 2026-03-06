@@ -38,7 +38,7 @@
         fwrite($dosya,$deger);
         fclose($dosya);
 
-        
+
     }
 
 ?>
@@ -78,6 +78,30 @@
                     <button type="submit" class="btn btn-primary" >
                         Gönder
                     </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php 
+                            $klasorYolu="yazilar/";$toplam=0;$degerler=[];
+                            $klasor=opendir($klasorYolu);
+                            while($dosya=readdir($dosya)){
+                                $tamYol=$klasorYolu.$dosya;
+                                if(!is_dir($tamYol)){
+                                    $oku=fopen($tamYol, "r");
+                                    $ebat=filesize($tamYol);
+                                    $deger= fread($oku,$ebat);
+                                    $toplam=$toplam+intval($deger) ;
+                                    $degerler[]=intval($deger);
+                                }
+                            }
+                            $adet+1;
+                            foreach($degerler as $deger){
+                                $yuzde=$deger*100/$toplam;
+                                echo "<br> % $yuzde $adet";
+                                $adet++;
+                            }
+                        ?>
+                    </div>
                 </div>
             </form>
         </div>
