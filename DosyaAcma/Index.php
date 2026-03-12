@@ -19,32 +19,46 @@
 
 <body>
     <?php 
+        // Form gönderildiyse metni dosyaya kaydetme işlemi
         if(isset($_POST["metin"])){
+            // Benzersiz bir dosya adı oluşturuyoruz (MD5 hash + zaman damgası)
             $yol="yazilar/".md5(time()).".txt";
+            // Dosyayı yazma modunda ("w") açıyoruz
             $dosya=fopen($yol,"w");
+            // Formdan gelen metni dosyaya yazıyoruz
             fwrite($dosya,$_POST["metin"]);
+            // Dosyayı kapatıyoruz
             fclose($dosya);
         }
     ?>
 <div class="container">
     <div class="row">
+        <!-- Metin yazma ve kaydetme formu -->
         <form action="#" method="post">
             <div class="mb-3">
                 <label for="metin" class="form-label">Yazı</label>
+                <!-- Metin alanı - kullanıcı buraya yazı yazıyor -->
                 <textarea class="form-control" name="metin" id="metin" rows="3"></textarea>
             </div>
 
+            <!-- Formu göndermek için butonu -->
             <button type="submit" class="btn btn-success">
                 Kaydet
             </button>
             
         </form>
     </div>
+    <!-- Kaydedilen yazıları listeleyen bölüm -->
     <div class="row mt-5">
         <?php 
+            // yazilar klasörünü açıyoruz
             $klasor=opendir("yazilar/");
+            // Klasördeki tüm dosyaları sırayla okuyoruz
             while ($dosya=readdir($klasor)) {
+                // Eğer okunan şey klasör değilse (yani dosya ise)
                 if(!is_dir($dosya)){
+                    // Dosya adını ve "Oku" linkini yazdırıyoruz
+                    // oku.php sayfasına dosya adını göndererek hangi dosyayı açacağını belirtiyoruz
                     echo "$dosya <a href='oku.php?dosya=$dosya'>Oku</a>  <br>";
                     
                 }

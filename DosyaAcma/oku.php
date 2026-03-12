@@ -17,15 +17,23 @@
                 <div class="col-md-12">
                     <p>
                         <?php 
+                            // URL'den gelen dosya adı kontrol ediliyor
                             if(isset($_GET["dosya"])){
+                                // Dosya yolunu oluşturuyoruz (klasör adı + dosya adı)
                                 $yol="yazilar/".$_GET["dosya"];
+                                // Dosyayı okuma modunda ("r") açıyoruz
                                 $dosya=fopen($yol,"r");
+                                // Dosyanın boyutunu alıyoruz (kaç byte olduğunu)
                                 $ebat=filesize($yol);
+                                // Eğer dosya boş değilse
                                 if($ebat>0){
+                                    // Dosyayı tamamen okuyoruz ve $yazilar değişkenine kaydediyoruz
                                     $yazilar=fread($dosya,$ebat);
                                 }
-                                    fclose($dosya);
-                                    echo "$yazilar";
+                                // Dosyayı kapatıyoruz
+                                fclose($dosya);
+                                // Okunan metni ekrana yazdırıyoruz
+                                echo "$yazilar";
                             }
                         ?>
                     </p>

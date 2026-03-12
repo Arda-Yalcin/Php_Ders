@@ -25,20 +25,28 @@
 
 
 <?php 
-
+    // Anket formu gönderildiğinde bu blok çalışıyor
     if(isset($_POST["secim"])){
+        // Seçilen seçeneğe göre dosya yolunu oluşturuyoruz
         $yol="yazilar/".$_POST["secim"].".txt";
+        // Dosyayı okuma modunda açıyoruz
         $dosya=fopen($yol,"r");
+        // Dosyanın boyutunu alıyoruz
         $ebat=filesize($yol);
+        // Dosyayı okuyoruz (içindeki sayı tutmu değeri)
         $deger=fread($dosya,$ebat);
+        // Dosyayı kapatıyoruz
         fclose($dosya);
+        // Okunan değeri 1 artırıyoruz (oy sayısı artar)
         $deger++;
+        // Güncellenmiş değeri ekrana bastırıyoruz
         echo $deger;
+        // Dosyayı yazma modunda yeniden açıyoruz
         $dosya=fopen($yol,"w");
+        // Artan değeri dosyaya yazıyoruz
         fwrite($dosya,$deger);
+        // Dosyayı kapatıyoruz
         fclose($dosya);
-
-
     }
 
 ?>
@@ -48,56 +56,88 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+            <!-- Anket formu -->
             <form action="#" method="post">
+                <!-- Anket sorusu -->
                 <h3>Php Dersini ne kadar seviyorsun</h3>
+                
+                <!-- Seçenek 1: Az -->
                 <div class="col-md-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="secim" id="" value="1" />
                         <label class="form-check-label" for=""> az </label>
                     </div>
                 </div>
+                
+                <!-- Seçenek 2: Eh işte -->
                 <div class="col-md-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="secim" id="" value="2" />
                         <label class="form-check-label" for=""> eh işte </label>
                     </div>
                 </div>
+                
+                <!-- Seçenek 3: Orta -->
                 <div class="col-md-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="secim" id="" value="3" />
                         <label class="form-check-label" for=""> orta </label>
                     </div>
                 </div>
+                
+                <!-- Seçenek 4: Çok -->
                 <div class="col-md-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="secim" id="" value="4" />
                         <label class="form-check-label" for=""> çok </label>
                     </div>
                 </div>
+                
+                <!-- Formu göndermek için butonu -->
                 <div class="col-md-3">
                     <button type="submit" class="btn btn-primary" >
                         Gönder
                     </button>
                 </div>
+                
+                <!-- Anket sonuçlarını göstermek için bölüm -->
                 <div class="row">
                     <div class="col-md-12">
                         <?php 
-                            $klasorYolu="yazilar/";$toplam=0;$degerler=[];
+                            // Klasör yolunu tanımlıyoruz
+                            $klasorYolu="yazilar/";
+                            // Toplam oy sayısı
+                            $toplam=0;
+                            // Her seçeneğin oy sayılarını tutacak dizi
+                            $degerler=[];
+                            // Klasörü açıyoruz
                             $klasor=opendir($klasorYolu);
+                            // Klasördeki tüm dosyaları sırayla okuyoruz
                             while($dosya=readdir($dosya)){
+                                // Tam dosya yolunu oluşturuyoruz
                                 $tamYol=$klasorYolu.$dosya;
+                                // Eğer klasör değilse (yani dosya ise)
                                 if(!is_dir($tamYol)){
+                                    // Dosyayı okuma modunda açıyoruz
                                     $oku=fopen($tamYol, "r");
+                                    // Dosyanın boyutunu alıyoruz
                                     $ebat=filesize($tamYol);
+                                    // Dosyayı okuyoruz (oy sayısı)
                                     $deger= fread($oku,$ebat);
+                                    // Toplam oya ekliyoruz
                                     $toplam=$toplam+intval($deger) ;
+                                    // Değeri diziye kaydediyoruz
                                     $degerler[]=intval($deger);
                                 }
                             }
+                            // Her seçeneğin yüzdesini hesaplayıp yazdırıyoruz
                             $adet+1;
                             foreach($degerler as $deger){
+                                // Yüzdeyi hesaplıyoruz (seçenek sayısı * 100 / toplam)
                                 $yuzde=$deger*100/$toplam;
+                                // Yüzdeyi ekrana yazdırıyoruz
                                 echo "<br> % $yuzde $adet";
+                                // Seçenek sayacını artırıyoruz
                                 $adet++;
                             }
                         ?>

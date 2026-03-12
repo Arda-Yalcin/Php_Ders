@@ -7,12 +7,16 @@
 </head>
 <body>
     <?php 
-    
-        //print_r($_FILES);
+        // Dosya gönderilip gönderilmediğini kontrol ediyoruz
         if(isset($_FILES["dosya"])){
+            // Dosyanın kaydedileceği klasörü tanımlıyoruz
             $hedef="odevler/";
+            // Hedef dosya yolunu oluşturuyoruz (klasör + dosya adı)
+            // basename() sadece dosya adını alır, yolu kaldırır
             $hedefDosya=$hedef.basename($_FILES["dosya"]["name"]);
 
+            // Dosyayı geçici konumdan hedef klasöre taşıyoruz
+            // move_uploaded_file() başarılı olursa TRUE döndürür
             if(move_uploaded_file($_FILES["dosya"]["tmp_name"], $hedefDosya)){
                 echo"Kayıt Başarılı";
             }
@@ -22,7 +26,8 @@
         }
 
     ?>  
-   <a href="index.php">Önceki Sayfa</a>
+    <!-- Önceki sayfaya dönmek için link -->
+    <a href="index.php">Önceki Sayfa</a>
     
 </body>
 </html>
